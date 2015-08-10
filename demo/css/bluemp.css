@@ -1,0 +1,1196 @@
+.bluemp_block_banner{
+  height: 135px;
+  width: 100%;
+}
+.bluemp_block_banner_img{
+	background-size:cover;
+	background-position:50% 50%;
+	height: 100%;
+}
+.bluemp_block_banner_wapper{
+  position: relative;
+}
+
+.bluemp_block_banner_wapper .hd{
+  width: 100%;
+  height: 11px;
+  position: absolute;
+  z-index: 1;
+  bottom: 5px;
+  text-align: center;
+  display: none;
+}
+
+.bluemp_block_banner_wapper .hd ul{
+  display: inline-block;
+  height: 5px;
+  padding: 3px 5px;
+  background-color: rgba(255,255,255,0.7);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 0;
+  vertical-align: top;
+}
+
+.bluemp_block_banner_wapper .hd ul li{
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #8C8C8C;
+  margin: 0 5px;
+  vertical-align: top;
+  overflow: hidden;	
+}
+.bluemp_block_banner_wapper .hd ul li.on{  
+	background: #FE6C9C;
+}
+.bluemp_block_banner_wapper .bd li img{  
+  width: 100%;
+  height: 140px;
+}
+
+.bluemp_block_banner_title{
+	display: none;
+}
+.bluemp_block_logo{
+  width: 170px;
+  position: relative;
+  left: 5%;
+  top: -50px;
+  z-index: 6;
+}
+.bluemp_block_logo_img{
+  width: 70px;
+  position: absolute;
+}
+
+.bluemp_block_logo_img img{
+  border: 2px solid #ffffff;
+  width: 100%;
+  position: absolute;
+  height: 70px;
+}
+.bluemp_block_title{
+  position: relative;
+  top: -31px;
+  width: 100%;
+}
+.bluemp_block_title_content{
+  margin: 0 auto;
+  text-align: left;
+  background: url(/Public/Home/Images/huati-bg.png);
+  font-size: 18px;
+  text-indent: 32%;
+  width: 100%;
+  line-height: 36px;
+  color: #fff;
+  position: absolute;
+}
+.bluemp_block_background{
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  min-height: 556px;
+  background-position: center center;
+}
+
+.bluemp_block_share{
+  height: 23px;
+  width: 100%;
+  margin-top: 32px;
+  position: absolute;
+  max-width: 520px;
+}
+.bluemp_block_share_border{
+  height: 21px;
+  width: 45px;
+  border: 1px solid #5B92E4;
+  margin-right: 8%;
+  line-height: 21px;
+  text-align: center;
+  color: #5B92E4;
+  float: right;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.bluemp_block_share_icon{
+  height: 13px;
+  width: 12px;
+  margin: 4px 2px -3px 3px;
+  background: url(../Images/share-icon.png) no-repeat;
+  background-size: 12px;
+  display: block;
+  float: left;
+}
+.bluemp_block_channel_list{
+  clear: both;
+  padding-bottom: 20px;
+  display: inline-block;
+  width: 100%;
+  margin-top: 50px;
+}
+.bluemp_block_channel_list li{
+    width: 40%;
+    height: 78px;
+    line-height: 78px;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    float: left;
+    margin: 20px 0 0 7%;
+}
+.bluemp_block_channel_list li a{
+    color: #fff;
+}
+.bluemp_block_channel_deepbg{
+  width: 40%;
+  height: 78px;
+  line-height: 78px;
+  text-align: center;
+  display: block;
+  background: #42bdf8;
+  font-size: 20px;
+  color: #fff;
+  float: left;
+  margin: 20px 0 0 7%;
+}
+.bluemp_block_channel_lightbg{
+  width: 40%;
+  height: 78px;
+  line-height: 78px;
+  text-align: center;
+  display: block;
+  background: #25cbe5;
+  font-size: 20px;
+  color: #fff;
+  float: left;
+  margin: 20px 0 0 7%;
+}
+.bluemp_block_bottom_nav{
+  width: 100%;
+  display: inline-block;
+}
+
+.bluemp_block_bottom_nav .bluemp_block_bottom_navWapper{
+  width: 82%;
+  line-height: 35px;
+  color: #32b16c;
+  margin-top: 0;
+  font-size: 12px;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0	9%;	
+}
+
+.bluemp_block_bottom_nav  .bluemp_block_bottom_navMain{
+  height: 40px;
+  width: 90%;
+  position: relative;
+  left: 0px;
+  margin: 0 auto;
+}
+
+.bluemp_block_bottom_nav  .bluemp_block_bottom_navMain li{
+	float: left;
+}
+
+.bluemp_block_main_navMain_icon{
+	display: none;
+}
+
+.bluemp_block_bottom_navMain_icon{
+	display: none;
+}
+
+.bluemp_block_copyright{
+	height:20px;
+}
+.bluemp_block_copyright span{
+  color: #c4c4c4;
+  margin-top: 0;
+  width: 100%;
+  line-height: 35px;
+  color: #4a86e6;
+  font-size: 12px;
+  text-align: center;
+  display: inline-block;
+}
+.bluemp_block_archivalinfo{
+	height:40px;
+  margin-bottom: 40px;
+}
+.bluemp_block_archivalinfo span{
+  color: #c4c4c4;
+  margin-top: 0;
+  width: 100%;
+  line-height: 35px;
+  color: #4a86e6;
+  font-size: 12px;
+  text-align: center;
+  display: inline-block;
+}
+#operateBlock .bluemp_block_channel_list{
+	padding: initial;
+  margin-top: initial;
+}
+#operateBlock .bluemp_block_channel_list ul li{
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-bottom: 1px solid #c3c3c1;
+  float: initial;
+  width: initial;
+  margin: initial;
+  background: initial;
+}
+#operateBlock .bluemp_block_channel_list ul li a{
+  font-size: 14px;
+  color: #626262;
+}
+
+.bluemp_block_article_list_wapper{
+  border: 1px solid #bababa;
+  padding: 10px;
+  clear: both;
+  margin: 8px 0;
+  background-color: #FFF;
+}
+
+.bluemp_block_article_list_title{
+  overflow: hidden;
+  word-break: break-word;
+  font-size: 18px;
+  color: #000;
+  line-height: 28px;
+}
+
+.bluemp_block_article_list_info{
+  font-size: 18px;
+  color: #000;
+  line-height: 28px;
+}
+
+.bluemp_block_article_list_time{
+  font-size: 14px;
+  color: #7b7b7b;
+  padding: 6px 0;
+}
+
+.bluemp_block_article_list_summary{
+  font-size: 14px;
+  color: #545454;
+  line-height: 22px;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.bluemp_block_article_list_summary span{
+	color: #ff8f15;
+}
+
+.bluemp_block_article_list_pic{
+  text-align: center;
+  padding: 8px 0;
+}
+
+.bluemp_block_article_list_pic img{
+  width: 92%;
+}
+
+.bluemp_block_article_list_entry{
+  border-top: 1px solid #e3e3e3;
+  padding: 5px 0;
+  font-size: 16px;
+  color: #4a87e2;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.bluemp_block_article_list_entry img{
+  width: 10px;
+  height: 15px;
+  float: right;
+  padding-top: 7px;
+}
+
+.bluemp_block_article_list_entry a{
+  float: left;
+  color: #4a87e2;
+  width: 100%;
+  display: block;
+}
+
+.bluemp_block_article_detail_wapper{
+  clear: both;
+  margin: 8px 0;
+}
+
+.bluemp_block_article_detail_title{
+  font-size: 18px;
+  color: #000;
+  line-height: 28px;
+  font-weight: bold;
+ }
+ 
+.bluemp_block_article_detail_info{
+  font-size: 14px;
+  color: #7b7b7b;
+  padding: 6px 0;
+}
+ 
+.bluemp_block_article_detail_cover{
+  text-align: center;
+  padding: 8px 0;
+}
+
+.bluemp_block_article_detail_cover img{
+  width: 92%;
+}
+
+.bluemp_block_article_detail_summary{
+  font-size: 14px;
+  color: #545454;
+  line-height: 22px;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.bluemp_block_article_detail_summary span{
+	color: #ff8f15;
+}
+
+.bluemp_block_article_detail_content{
+  margin-top:1em;
+  font-size: 14px;
+  color: #545454;
+  line-height: 22px;
+  word-wrap: break-word;
+  word-break: normal;
+  width: 100%;
+}
+
+.bluemp_block_article_detail_content img {
+  max-width: 99%;
+}
+
+.bluemp_block_article_optionsWapper{
+  height: 40px;
+  width: 100%;
+  margin-bottom: 5px;
+  line-height: 30px;
+}
+
+.bluemp_block_breadcrumb{
+	
+}
+
+.bluemp_block_breadcrumb span{
+  float: left;	
+}
+
+.bluemp_block_breadcrumb span a{
+  font-size: 18px;
+  color: #6b6b6b;
+}
+
+.bluemp_block_article_options_readnum{
+  color: #545454;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.bluemp_block_article_options_praise{
+  color: #545454;
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.bluemp_block_article_options_praiseIconOff{
+  background: url('/Public/Home/Images/dianzancg_icon.png') center no-repeat;
+  display: inline-block;
+  background-size: 18px 20px;
+  width: 18px;
+  height: 20px;
+}
+
+.bluemp_block_article_options_praiseIconOn{
+  background: url('/Public/Home/Images/dianzan_icon.png') center no-repeat;
+  display: inline-block;
+  background-size: 18px 20px;
+  width: 18px;
+  height: 20px;
+}
+
+.bluemp_block_article_options_comment{
+  color: #545454;
+  font-size: 14px;
+  display: inline-block;
+  float: right;
+}
+
+.bluemp_block_article_options_comment_on{
+  border-radius: 5px;
+  background-color: #4a87e2;
+  width: 70px;
+  text-align: center;
+  float: right;
+}
+
+.bluemp_block_article_options_comment_on a{
+  color: #FFF;
+  font-size: 14px;
+  text-align: center;
+  line-height: 30px;
+  display: block;
+}
+
+.bluemp_block_article_options_comment_off{
+  width: 150px;
+  text-align: center;
+  float: right;
+  color: #B1B1B1;
+  font-size: 14px;
+}
+
+.bluemp_block_article_options_share{
+  color: #545454;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.bluemp_block_article_options_shareWapper{
+  float: right;
+  margin: 0 8px;
+  font-size: 14px;
+}
+
+.bluemp_block_article_options_shareContent{
+  height: 21px;
+  width: 45px;
+  border: none;
+  margin-right: 8%;
+  line-height: 21px;
+  text-align: center;
+  color: #5B92E4;
+  float: right;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.bluemp_block_article_options_shareContentIcon{
+  height: 13px;
+  width: 12px;
+  margin: 4px 2px -3px 3px;
+  background: url(../Images/share-icon.png) no-repeat;
+  background-size: 12px;
+  display: block;
+  float: left;
+}
+
+.bluemp_block_article_reply_list{
+  margin-top: 13px;
+}
+
+.bluemp_block_article_reply_listTop{
+  background-color: #999;
+  color: #FFF;
+  padding: 5px 8px;
+}
+
+.bluemp_block_article_reply_count{
+	
+}
+
+.bluemp_block_article_reply_block{
+	overflow: hidden;
+}
+
+.bluemp_block_article_reply_blockContent{
+  float: left;
+  width: 100%;
+  padding: 0;
+  border-bottom: 1px solid #e3e3e3;
+  margin-top: 5px;
+  list-style: none;
+  position: relative;
+}
+
+.bluemp_block_article_reply_block_userPhoto{
+  float: left;
+  width: 32px;
+  padding: 0 6px;
+  margin-top: 6px;
+}
+
+.bluemp_block_article_reply_block_userPhoto img{
+  width: 35px;
+  height: 35px;
+  border: 1px solid #a8a8a8;
+}
+
+.bluemp_block_article_reply_block_userInfo{
+  float: left;
+  width: 78%;
+  margin: 5px 0 0px 3px;
+}
+
+.bluemp_block_article_reply_block_userNickname{
+  font-size: 14px;
+  color: #000;
+  width: 95%;
+  line-height: 18px;
+  list-style: none;
+}
+
+.bluemp_block_article_reply_block_replyTime{
+  font-size: 12px;
+  color: #a1a1a1;
+  float: left;
+  padding: 6px 0;
+  list-style: none;
+}
+
+.bluemp_block_article_reply_replyContent{
+  width: 94%;
+  line-height: 20px;
+  font-size: 14px;
+  color: #545454;
+  float: left;
+  padding: 3px 0 0 6px;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.bluemp_block_article_reply_replyOption{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #545454;
+  float: right;
+  text-align: right;
+}
+
+.bluemp_block_article_reply_praise{
+  height: 30px;
+  width: initial;
+  line-height: 30px;
+  font-size: 14px;
+  color: #4a85e3;
+  padding: 0 21px;
+  display: inline-block;
+}
+
+.bluemp_block_article_reply_praiseIconOff{
+  background: url('/Public/Home/Images/anzan-icon.jpg') center no-repeat;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  padding: 5px;
+  float: left;
+  line-height: 30px;
+  font-size: 14px;	
+}
+
+.bluemp_block_article_reply_praiseIconOn{
+  background: url('/Public/Home/Images/liangzan-icon.jpg') center no-repeat;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  padding: 5px;
+  float: left;
+  line-height: 30px;
+  font-size: 14px;	
+}
+
+.bluemp_block_article_reply_praiseCount{
+  display: initial;
+  width: initial;
+  height: initial;
+  line-height: initial;
+  float: right;
+  padding: 5px 0 0 0;
+  font-size: 14px;
+  color: #4a85e3;
+}
+
+.bluemp_block_article_reply_delete{
+  line-height: 30px;
+  font-size: 14px;
+  color: #4a85e3;
+  float: right;
+  padding-left: 10px;
+}
+
+.bluemp_block_userlogin,.bluemp_block_userlogin_logout{
+  background: #5b92e4;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  font-size: 14px;
+  color: #626262;
+  border-bottom: 1px solid #c3c3c1;
+}
+
+.bluemp_block_userlogin a{
+  height: 30px;
+  color: #fff;
+  position: relative;
+  top: -12px;
+}
+
+.bluemp_block_userlogin_login_icon{
+  background: url(/Public/Home/Images/huati-icon05.png) center center no-repeat;
+  background-size: 24px;
+  width: 35px;
+  position: relative;
+  top: 12px;
+  height: 35px;
+  display: inline-block;
+}
+
+.bluemp_block_userlogin_logout a{
+  height: 30px;
+  color: #000;
+}
+
+.bluemp_block_userlogin_logout a#loginout{
+  color: #fff;
+  position: relative;
+  top: -12px;
+}
+
+.bluemp_block_block_list{
+  width: 100%;
+}
+
+.bluemp_block_block_list ul{
+  width: 94%;
+  margin: 0 auto;
+  border: 1px solid #bababa;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background: #fff;
+}
+
+.bluemp_block_block_list ul li{
+	
+}
+.bluemp_block_block_list ul li a{
+  color: #787878;
+  width: 98%;
+  height: 42px;
+  border-bottom: 1px solid #e7e7e7;
+  line-height: 48px;
+  font-size: 16px;
+  color: #787878;
+  margin: 0 auto;
+  text-indent: 30px;
+  display: inline-block;
+}
+
+.bluemp_block_block_list_replynum{
+  width: 100px;
+  line-height: 30px;
+  color: #4a87e2;
+  text-align: right;
+  float: right;
+  margin-top: 10px;
+  margin-right: 3px;
+}
+
+.bluemp_block_block_list_enterIcon{
+  height: 14px;
+  width: 10px;
+  float: right;
+  margin: 8px 0 0 10px;
+}
+
+.bluemp_block_topic_rank_wapper{
+  height: 32px;
+  width: 97%;
+  font-size: 16px;
+  color: #777777;
+  line-height: 32px;
+  word-break: break-all;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.bluemp_block_topic_rank_wapper a{
+  color: #777777;
+}
+
+.bluemp_block_topic_rank_index{
+  background: #6b6b6b;
+  margin: 8px 2% 15px 4%;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 2px;
+  display: inline;
+}
+
+
+.bluemp_block_topic_rank_index.top3{
+  background: #fb6800;
+}
+
+.bluemp_block_topic_list_wapper {
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  border: 1px solid #bababa;
+  margin: 0 2% 10px 2%;
+  width: 96%;
+  overflow: hidden;
+}
+.bluemp_block_topic_info{
+  padding: 6px 5px 0 6px;
+  list-style: none;
+  width: 96%;
+  display: inline-block;
+  position: relative;
+}
+
+.bluemp_block_topic_info_user{
+  float: left;
+  width: 46px;
+  padding: 5px 7px 0px 5px;
+}
+
+.bluemp_block_topic_info_user img{
+  width: 46px;
+  height: 46px;
+  border: 1px solid #a8a8a8;
+}
+
+.bluemp_block_topic_info ul{
+  margin: 5px 0 0px 3px;
+}
+
+.bluemp_block_topic_info_username{
+  font-size: 16px;
+  color: #000;
+  width: 95%;
+  line-height: 25px;
+}
+
+.bluemp_block_topic_info_ptime{
+  font-size: 12px;
+  color: #878686;
+  float: left;
+  padding-top: 6px;
+}
+
+.bluemp_block_topic_content a{ 
+  font-size: 14px;
+  color: #545454;
+  padding: 4px 10px;
+  line-height: 22px;
+  clear: both;
+  word-wrap: break-word;
+  word-break: normal;
+  display: block;
+}
+
+.bluemp_block_topic_tip1{
+  border-radius: 3px;
+  background-color: #538D00;
+  padding: 2px;
+  width: 59px;
+  font-size: 14px;
+  display: inline-block;
+  color: #FFF;
+  margin: 0 2px;
+}
+
+.bluemp_block_topic_tip2{
+  border-radius: 3px;
+  background-color: #538D00;
+  padding: 2px;
+  width: 30px;
+  font-size: 14px;
+  color: #FFF;
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.bluemp_block_topic_tip3{
+  border-radius: 3px;
+  background-color: #ff8f15;
+  padding: 2px;
+  width: 71px;
+  font-size: 14px;
+  display:inline-block;
+  color: #FFF;
+  margin: 0 2px;
+}
+
+.bluemp_block_topic_options{
+	height: 41px;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.bluemp_block_topic_action_top{
+  float: left;
+  font-size: 14px;
+  color: #7b7b7b;
+  margin: 11px;
+}
+
+.bluemp_block_topic_action_untop{
+  float: left;
+  font-size: 14px;
+  color: #7b7b7b;
+  margin: 11px;
+}
+.bluemp_block_topic_action_praise{
+  float: right;
+  margin: 11px 0px 0 0;
+}
+
+.bluemp_block_topic_action_praiseiconOff{
+  background: url(/Public/Home/Images/anzan-icon.jpg) center center no-repeat;
+  height: 14px;
+  width: 14px;
+  background-size: 14px;
+  float: left;
+  margin: 1px;
+}
+
+.bluemp_block_topic_action_praiseiconOn{
+  background: url(/Public/Home/Images/liangzan-icon.jpg) center center no-repeat;
+  height: 14px;
+  width: 14px;
+  background-size: 14px;
+  float: left;
+  margin: 1px;
+}
+
+.bluemp_block_topic_action_praisenum{
+  font-size: 14px;
+  color: #7b7b7b;
+  margin-left: 3px;
+}
+.bluemp_block_topic_action_reply{
+  float: right;
+  margin: 11px 20px 0 46px;
+}
+
+.bluemp_block_topic_action_replyicon{
+  background: url(/Public/Home/Images/huifu-icon2.jpg) center center no-repeat;
+  height: 14px;
+  width: 14px;
+  background-size: 14px;
+  float: left;
+  margin: 1px;
+}
+
+.bluemp_block_topic_action_reply span{
+  font-size: 14px;
+  color: #000;
+}
+
+.bluemp_block_topic_detail_wapper{
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  border: 1px solid #bababa;
+  margin: 0 2% 10px 2%;
+  width: 96%;
+  overflow: hidden;
+}
+
+.bluemp_block_topic_detail_info{
+  padding: 6px 5px 0 6px;
+  list-style: none;
+  width: 96%;
+  display: inline-block;
+  position: relative;
+}
+
+.bluemp_block_topic_detail_userinfo{
+  float: left;
+  width: 46px;
+  padding: 5px 7px 0px 5px;
+}
+
+.bluemp_block_topic_detail_userinfo img{
+  width: 46px;
+  height: 46px;
+  border: 1px solid #a8a8a8;
+}
+
+.bluemp_block_topic_detail_userinfo ul{
+  margin: 5px 0 0px 3px;
+}
+
+.bluemp_block_topic_detail_username{
+  font-size: 16px;
+  color: #000;
+  width: 95%;
+  line-height: 25px;
+}
+
+.bluemp_block_topic_detail_ptime{
+  font-size: 12px;
+  color: #878686;
+  float: left;
+  padding-top: 6px;
+}
+.bluemp_block_topic_detail_content{
+  font-size: 14px;
+  color: #545454;
+  padding: 4px 10px;
+  line-height: 22px;
+  clear: both;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.bluemp_block_topic_detail_pic{
+  width: 100%;
+  margin-top: 2px;
+  clear: both;
+  display: inline-block;
+}
+
+.bluemp_block_topic_detail_picWapper{
+  width: 95%;
+  margin-left: 2%;
+  float: left;
+}
+.bluemp_block_topic_detail_picWapper ul li img{
+  width: 30%;
+  margin: 5px 0 5px 2%;
+  height: 100px;
+  float: left;
+  border: 1px solid #ccc;
+}
+.bluemp_block_topic_detail_options{
+  height: 40px;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.bluemp_block_topicd_action_del{
+  font-size: 14px;
+  color: #7b7b7b;
+  float: left;
+  margin: 11px 0 0 20px;
+}
+
+.bluemp_block_topicd_action_praise{
+  margin: 11px 0 0 0;
+  float: right;
+}
+.bluemp_block_topicd_action_praiseiconOn{
+  background: url(/Public/Home/Images/liangzan-icon.jpg) center center no-repeat;
+  height: 14px;
+  width: 14px;
+  background-size: 14px;
+  float: left;
+  margin: 1px;
+}
+
+.bluemp_block_topicd_action_praiseiconOff{
+  background: url(/Public/Home/Images/anzan-icon.jpg) center center no-repeat;
+  height: 14px;
+  width: 14px;
+  background-size: 14px;
+  float: left;
+  margin: 1px;
+}
+
+.bluemp_block_topicd_action_praisenum{
+  font-size: 14px;
+  color: #7b7b7b;
+}
+.bluemp_block_topicd_action_reply{
+  float: right;
+  margin: 11px 20px 0 36px;
+  font-size: 14px;
+  text-indent: 2px;
+}
+
+.bluemp_block_topicd_action_replyicon{
+  background: url(/Public/Home/Images/huifu-icon2.jpg) center center no-repeat;
+  height: 14px;
+  width: 14px;
+  background-size: 14px;
+  float: left;
+  margin: 1px;
+}
+.bluemp_block_topicPublish{
+  width: 25%;
+  margin-right: 3%;
+  float: right;
+}
+.bluemp_block_topicPublish a{
+  width: 20%;
+  height: 35px;
+  padding: 5px;
+  color: #FFFFFF;
+  border-radius: 3px;
+  background-color: #eb6100;
+  font-size: 16px;
+}
+.bluemp_block_topic_listReply{
+  margin: 0px 15px;
+}
+
+.bluemp_block_topic_listReply ul {
+  border-bottom: 1px solid #e3e3e3;
+}
+.bluemp_block_topic_listReply ul li{
+  font-size: 14px;
+  color: #484848;
+  line-height: 26px;
+  word-wrap: break-word;
+  word-break: normal;	
+}
+.bluemp_block_topic_listReply ul li span{
+  color: #9e9d9d;
+}
+.bluemp_block_topic_listReplyE{
+  line-height: 28px;
+  text-align: center;
+}
+
+.bluemp_block_topic_listReplyE a {
+  font-size: 14px;
+  color: #6da6fb;
+  display: block;
+}
+
+.bluemp_block_topic_reply_listWapper{
+  float: left;
+  width: 96%;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+  margin-top: 5px;
+  margin-left: 2%;
+}
+
+.bluemp_block_topic_reply_userImg{
+  float: left;
+  width: 32px;
+  padding: 0 6px;
+  margin-top: 6px;
+}
+
+.bluemp_block_topic_reply_userImg  a img{
+  width: 35px;
+  height: 35px;
+  border: 1px solid #a8a8a8;
+}
+.bluemp_block_topic_reply_userInfo{
+  float: left;
+  width: 76%;
+  margin: 5px 0 0px 3px;
+}
+
+.bluemp_block_topic_reply_userInfo1{
+  font-size: 14px;
+  color: #000;
+  width: 95%;
+  line-height: 18px;
+}
+
+.bluemp_block_topic_reply_userInfo1 span{
+  float: right;
+  height: 12px;
+  font-size: 12px;
+  color: #7b7b7b;
+}
+
+.bluemp_block_topic_reply_userInfo2{
+  font-size: 12px;
+  color: #a1a1a1;
+  float: left;
+  padding: 6px 0;
+}
+
+.bluemp_block_topic_reply_content{
+  width: 94%;
+  line-height: 20px;
+  font-size: 14px;
+  color: #545454;
+  float: left;
+  padding: 3px 0 0 6px;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.bluemp_block_topic_reply_options{
+  width: 94%;
+  line-height: 20px;
+  font-size: 14px;
+  color: #545454;
+  float: left;
+  padding: 3px 0 0 6px;
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.bluemp_block_topic_reply_actionRA span{
+  height: 30px;
+  width: 15%;
+  line-height: 30px;
+  font-size: 14px;
+  color: #4a85e3;
+  margin-right: 5%;
+  float: right;
+}
+
+.bluemp_block_topicd_action_untop,.bluemp_block_topicd_action_top{
+  font-size: 14px;
+  color: #7b7b7b;
+  float: left;
+  margin: 11px 0 0 20px;
+}
+
+li.bluemp_block_topic_reply_listWapper.replyAgain{
+  border-bottom: none;
+  border-top: 1px dashed #ccc;
+}
+
+.bluemp_block_topic_reply_againBox{
+  float: left;
+  width: 96%;
+  padding: 0;
+  margin-top: 5px;
+  margin-left: 2%;
+}
+
+.bluemp_block_topic_reply_actiond{
+  height: 30px;
+  width: 15%;
+  line-height: 30px;
+  font-size: 14px;
+  color: #4a85e3;
+  margin-right: 5%;
+  float: right;
+}
+
+.bluemp_block_article_reply_block_userLevel{
+  height: 20px;
+  width: 20px;
+  padding: 0 5px;
+  vertical-align: middle;
+}
+
+.bluemp_block_topic_reply_block_userLevel{
+  height: 20px;
+  width: 20px;
+  padding: 0 5px;
+  vertical-align: middle;
+}
