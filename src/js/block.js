@@ -1,6 +1,6 @@
 <script>
 	//ģ�黯
-bluemp.block = {};
+
 
 bluemp.block.banner = function(){
 	var Banner = function(config){
