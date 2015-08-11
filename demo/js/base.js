@@ -330,7 +330,341 @@ $(function() {
 
 
 
+/*公用弹窗*/
+var popup = {
+    t: 0,
+    remind: function(txt) {
+        var self = this;
+        var _boxHtml = $('<div class="popRemind"><div class="conBox"><div class="con"></div></div><div class="bg"></div></div>');
+        if (!$(".popRemind")[0]) {
+            _boxHtml.appendTo($('body'));
+        }
+        $(".popRemind .con").html(txt);
+        var _box = $(".popRemind");
+        _box.css({
+            position: 'absolute',
+            left: ($(window).width() - _box.outerWidth()) / 2,
+            top: ($(window).height() - _box.outerHeight()) / 2 + $(document).scrollTop()
+        });
+        $('.popRemind .bg').css({
+            height: _box.outerHeight(),
+            width: _box.outerWidth()
+        });
+        this.open(_box);
+        this.t = setTimeout(function() {
+            self.close(_box)
+        }, 2000);
+        $(".popRemind .close").click(function() {
+            var node = $(".popRemind");
+            self.close(node);
+        })
+    },
+    score: function(txt, node, color) {
+        var self = this;
+        var _boxHtml = $('<span id="popAddScore"><i></i></span>');
+        if (!$("#popAddScore")[0]) {
+            _boxHtml.appendTo($('body'));
+        }
+        var _box = $("#popAddScore");
+        _box.find('i').html(txt);
+        _box.css({
+            'font-size': '12px',
+            position: 'absolute',
+            left: node.offset().left + node.outerWidth() / 2 - 10,
+            top: node.offset().top + node.height(),
+            display: 'block',
+            color: color,
+            'white-space': 'nowrap'
+        });
+        _box.find('i').css({
+            position: 'absolute',
+            left: 0,
+            bottom: 0,
+            display: 'block'
+        });
+        var _fontSize = _box.css('font-size');
+        _fontSize = parseFloat(_fontSize, 10);
+        var fontTime = setInterval(function() {
+            _fontSize++;
+            _box.css({
+                'font-size': _fontSize
+            });
+        }, 30);
+        _box.fadeOut(800);
+        setTimeout(function() {
+            clearInterval(fontTime);
+        }, 600);
+    },
+    open: function(node) {
+        clearTimeout(this.t);
+        node.fadeIn(600);
+    },
+    close: function(node) {
+        clearTimeout(this.t);
+        node.fadeOut(1000);
+    }
+};
 
+/*一些特效*/
+var effect = {
+    retract: function(id) {
+        $('#' + id).slideToggle(800);
+    }
+};
+
+/*
+ 
+ * 
+ * 表情包
+ * */
+/**
+ * @time 2012-12-14
+ */
+
+//自定义hashtable
+function Hashtable() {
+    this._hash = new Object();
+    this.put = function(key, value) {
+        if (typeof (key) != "undefined") {
+            if (this.containsKey(key) == false) {
+                this._hash[key] = typeof (value) == "undefined" ? null : value;
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    this.remove = function(key) { delete this._hash[key]; }
+    this.size = function() { var i = 0; for (var k in this._hash) { i++; } return i; }
+    this.get = function(key) { return this._hash[key]; }
+    this.containsKey = function(key) { return typeof (this._hash[key]) != "undefined"; }
+    this.clear = function() { for (var k in this._hash) { delete this._hash[k]; } }
+}
+
+var emotions = new Array();
+var categorys = new Array();// 分组
+var uSinaEmotionsHt = new Hashtable();
+
+// 初始化缓存，页面仅仅加载一次就可以了
+$(function() {
+	//var app_id = '1362404091';
+	$.ajax( {
+		//dataType : 'jsonp',
+		dataType : 'json',
+		//url : 'https://api.weibo.com/2/emotions.json?source=' + app_id,
+		url:'/Home/Public/biaoqing',
+		success : function(response) {
+			var data = response.data;
+			for ( var i in data) {
+				if (data[i].category == '') {
+					data[i].category = '默认';
+				}
+				if (emotions[data[i].category] == undefined) {
+					emotions[data[i].category] = new Array();
+					categorys.push(data[i].category);
+				}
+				emotions[data[i].category].push( {
+					name : data[i].phrase,
+					icon : data[i].icon
+				});
+				uSinaEmotionsHt.put(data[i].phrase, data[i].icon);
+			}
+		}
+	});
+});
+
+//替换
+function AnalyticEmotion(s) {
+	if(typeof (s) != "undefined") {
+		var sArr = s.match(/\[.*?\]/g);
+		for(var i = 0; i < sArr.length; i++){
+			if(uSinaEmotionsHt.containsKey(sArr[i])) {
+				var reStr = "<img src=\"" + uSinaEmotionsHt.get(sArr[i]) + "\" height=\"22\" width=\"22\" />";
+				s = s.replace(sArr[i], reStr);
+			}
+		}
+	}
+	return s;
+}
+
+(function($){
+	$.fn.SinaEmotion = function(target){
+		var cat_current;
+		var cat_page;
+		$(this).click(function(event){
+			event.stopPropagation();
+			
+			//var eTop = target.offset().top + target.height() + 15;
+			//var eLeft = target.offset().left - 1;
+			var eTop = '185px';
+			var eLeft ='20px';
+			if($('#emotions .categorys')[0]){
+				$('#emotions').css({top: eTop, left: eLeft});
+				$('#emotions').toggle();
+				return;
+			}
+			$('#face').after('<div id="emotions"></div>');
+			$('#emotions').css({top: eTop, left: eLeft});
+			$('#emotions').html('<div>正在加载，请稍候...</div>');
+			$('#emotions').click(function(event){
+				event.stopPropagation();
+			});
+			
+			//$('#emotions').html('<div style="float:right"><a href="javascript:void(0);" id="prev">&laquo;</a><a href="javascript:void(0);" id="next">&raquo;</a></div><div class="categorys"></div><div class="container"></div><div class="page"></div>');
+			$('#emotions').html('<div class="categorys"></div><div class="container"></div>');
+			/*$('#emotions #prev').click(function(){
+				showCategorys(cat_page - 1);
+			});
+			$('#emotions #next').click(function(){
+				showCategorys(cat_page + 1);
+			});*/
+			showCategorys();
+			showEmotions();
+			
+		});
+		$('body').click(function(){
+			$('#emotions').remove();
+		});
+		$.fn.insertText = function(text){
+			this.each(function() {
+				if(this.tagName !== 'INPUT' && this.tagName !== 'TEXTAREA') {return;}
+				if (document.selection) {
+					this.focus();
+					var cr = document.selection.createRange();
+					cr.text = text;
+					cr.collapse();
+					cr.select();
+				}else if (this.selectionStart || this.selectionStart == '0') {
+					var 
+					start = this.selectionStart,
+					end = this.selectionEnd;
+					this.value = this.value.substring(0, start)+ text+ this.value.substring(end, this.value.length);
+					this.selectionStart = this.selectionEnd = start+text.length;
+				}else {
+					this.value += text;
+				}
+			});        
+			return this;
+		}
+		function showCategorys(){
+			var page = arguments[0]?arguments[0]:0;
+			if(page < 0 || page >= categorys.length / 5){
+				return;
+			}
+			$('#emotions .categorys').html('');
+			cat_page = page;
+			//for(var i = page * 5; i < (page + 1) * 5 && i < categorys.length; ++i){
+				//$('#emotions .categorys').append($('<a href="javascript:void(0);">' + categorys[i] + '</a>'));
+			//}
+			$('#emotions .categorys a').click(function(){
+				showEmotions($(this).text());
+			});
+			$('#emotions .categorys a').each(function(){
+				if($(this).text() == cat_current){
+					$(this).addClass('current');
+				}
+			});
+		}
+		function showEmotions(){
+			var category = arguments[0]?arguments[0]:'默认';
+			
+			var page = arguments[1]?arguments[1] - 1:0;
+			
+			$('#emotions .container').html('');
+			$('#emotions .page').html('');
+			cat_current = category;
+			//alert(emotions[category].length);
+			/*for(var i = page * 72; i < (page + 1) * 72 && i < emotions[category].length; ++i){
+				$('#emotions .container').append($('<a href="javascript:void(0);" title="' + emotions[category][i].name + '"><img src="' + emotions[category][i].icon + '" alt="' + emotions[category][i].name + '" width="22" height="22" /></a>'));
+			}*/
+			for(var i = 1; i < 25; ++i){
+				$('#emotions .container').append($('<a href="javascript:void(0);" title="' + emotions[category][i].name + '"><img src="' + emotions[category][i].icon + '" alt="' + emotions[category][i].name + '" width="22" height="22" /></a>'));
+			}
+			
+			$('#emotions .container a').click(function(){
+				target.insertText($(this).attr('title'));
+				$('#emotions').remove();
+			});
+			/*for(var i = 1; i < emotions[category].length / 72 + 1; ++i){
+				$('#emotions .page').append($('<a href="javascript:void(0);"' + (i == page + 1?' class="current"':'') + '>' + i + '</a>'));
+			}*/
+			$('#emotions .page a').click(function(){
+				showEmotions(category, $(this).text());
+			});
+			$('#emotions .categorys a.current').removeClass('current');
+			$('#emotions .categorys a').each(function(){
+				if($(this).text() == category){
+					$(this).addClass('current');
+				}
+			});
+		}
+	}
+})(jQuery);
+
+/**
+ * ajax请求提交
+ * @param url
+ * @param param
+ * @param callback
+ * @param type
+ */
+function jsonAjax(url, param, callback, type) {
+    url = 'http://100011.bluemp.cn/Home' + url;
+    _type = 'post';
+    if (type.toLowerCase() == 'get') {
+        _type = 'get';
+    }
+    $.ajax({
+        url: url,
+        type: _type,
+        data: param,
+        dataFilter: function(data) {
+            console.log(typeof data)
+			if(eval('(' + data + ')')){
+				data = eval('(' + data + ')')
+			}else{
+				data = data
+			}
+           
+            return data;
+        },
+        success: callback,
+        error: function() {
+            console.log("系统异常，请稍后重试！");
+        }
+    });
+}
+
+/**
+ * ajax请求提交,同步
+ * @param url
+ * @param param
+ * @param callback
+ * @param type
+ */
+function jsonAjaxSyn(url, param, callback, type) {
+    url = 'http://100011.bluemp.cn/Home' + url;
+    _type = 'post';
+    if (type.toLowerCase() == 'get') {
+        _type = 'get';
+    }
+    $.ajax({
+        url: url,
+        type: _type,
+        async: false,
+        data: param,
+        dataFilter: function(data) {
+            data = eval('(' + data + ')')
+            return data;
+        },
+        success: callback,
+        error: function() {
+            console.log("系统异常，请稍后重试！");
+        }
+    });
+}
 
 
 
