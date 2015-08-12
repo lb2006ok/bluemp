@@ -1,0 +1,188 @@
+<extend name="Public:newbase" />
+<block name="main">
+    <js file="__JS__/common/imagesloaded.js" />
+    <js file="__JS__/common/masonry.min.js" />
+    <js file="__JS__/common/iscroll.js" />
+    <js file="__JS__/common/fastclick.min.js" />
+    <css file="__CSS__/index.css" />
+    <css file="__CSS__/theme{$theme}.css" />
+    <style>
+    	.bluemp_block_logo {
+	  width: 170px;
+	  position: relative;
+	  left: 5%;
+	  top: -98px;
+	  z-index: 6;
+	}
+	.ht_nav{
+		height: 53px;
+	}
+	.shouye-bg {
+	  width: initial;
+	  position: relative;
+	  top: -62px;
+	}
+	.name-span {
+	  left: 23%;
+	 }
+	.box .name-bg {
+	  top: -31px;
+	  left: 22%;
+	  height: 30px;
+	  width: 160px;
+	  position: relative;
+	}	
+	.huati-huifu {
+	  position: relative;
+ 	  bottom: 0px;
+	}
+	.shouye-bg .pan2 {
+	  height: 36px;
+	  width: 65%;
+	  line-height: 36px;
+	  font-size: 14px;
+	  color: #fff;
+	  position: relative;
+	  top: -36px;
+	  padding-left: 25%;
+	}	
+    </style>
+    <div class="bluemp_block_banner"></div>
+	<div class="bluemp_block_logo"></div>
+	<div class="shouye-bg">
+		<div class="name-bg"><img src="__IMG__/name-bg.png"><span class="name-span" id="comName"></span></div>	
+		<div class="huati-huifu"><img src="__IMG__/huati-bg.png"></div>
+		<div class="pan2" style="text-align:center;">
+			<span><img src="__IMG__/huati-icon.png" alt="">话题<span id="topicNum"></span></span>
+			<span style="margin-left:20px;"><img src="__IMG__/huifu-icon.png" alt="">回复<span id="replyNum"></span></span>
+		</div>	
+	</div>
+	<div class="clear"></div>
+	<div class="content">
+		<div class="ht_nav">
+			<div class="nav_font" id="plateChange" style="position:relative;">
+				<ul><li class="nav_A"><a href="javascript:void(0)" id="plateName"></a></li><li class="nav_B"><a href="javascript:void(0)"><img src="__IMG__/ht_icon0.png" /></a></li></ul>
+				<div class="bankuaibufen" id="plateSelect" style="top:50px;position:absolute;display:none;">
+					<div class="bluemp_block_block_list"></div>
+				</div>
+			</div>
+			<span class="nav_hts">话题数：<span id="blockTopicNum"></span></span>
+			<div class="bluemp_block_topicPublish"></div>
+		</div>
+		<div class="bluemp_block_topic_list"></div>
+		<div class="loading_A" style="display:none;"><img src="__IMG__/nui_ico_loading_xs.gif">加载中...</div>
+		<p style="height:50px;"></p>
+	</div>
+	<footer>
+		<nav>
+			<div class="f_box">
+				<ul id="mainNav">
+	                <li class="list_A4"><a href="javascript:;"  id="showMainMenu"><img src="__IMG__/gengduo-icon.png"/></a>
+	               
+	                </li>
+	            </ul>
+			</div>
+			<div class="tanceng1" id="mainMenu" style="display: none;position: absolute; bottom: 50px;; left:100%;">
+				
+				<div class="bluemp_block_userlogin"></div>
+			</div>
+		</nav>
+	</footer>
+	<script>
+		new bluemp.block.banner();		
+		new bluemp.block.logo();
+		new bluemp.block.breadcrumb({type:2,isDefault:false,fnSuccess:function(data){
+			$('#plateName').html(data.second_name);
+			new bluemp.block.blockList({isDefault:false,fnSuccess:function(data){
+				var pid = bluemp_pid
+				var html = '<ul>';
+				for(i=0;data!=null&&data.length!=0&&i<data.length;i++){
+					if(data[i].id!=pid){
+						html += '<li class="bluemp_block_block_list_wapper"><a href="/Home/Forum/plate/id/'+data[i].id+'.html">'+data[i].name+'</a></li>';
+					}
+				}
+				html += '</ul>';
+				$('.bluemp_block_block_list').append(html);
+			}});
+		}});
+		$(document).on('click','#plateChange',function(){
+			var _operateBlock = $('#plateSelect');
+			if(_operateBlock.is(':visible')){
+				_operateBlock.slideUp();
+			}else{
+				_operateBlock.slideDown();
+			}
+		})
+		
+		document.body.addEventListener('touchstart',function(e){
+			if($(e.target).closest('#plateChange').length==1||$(e.target).closest('#plateSelect').length==1){
+					
+			}else{
+				blurMenu3();
+			}
+		},false)
+		function blurMenu3(){
+			if($('#plateSelect').is(':visible')){
+				$('#plateSelect').slideUp();
+			}
+		} 
+
+		new bluemp.block.communityInfo({isDefault:false,fnSuccess:function(data){
+			$('#topicNum').text(data.topictotal);
+			$('#replyNum').text(data.replytotal);
+			$('#comName').text(data.forumname);
+		}});
+		
+		new bluemp.block.blockInfo({isDefault:false,fnSuccess:function(data){
+			$('#blockTopicNum').text(data.topictotal);
+		}});
+		new bluemp.block.topicList({replyLimit:5});
+		new bluemp.block.topicPublish();
+		
+		new bluemp.block.mainNav({isDefault:false,fnSuccess:function(data){
+			var html1 = '';
+			data!=null?html1 += '<li class="list_A1"><a href="/Portal/channel.html"><img src="__IMG__/home-icon.png"/></a></li>':html1+='';
+			for(i=0;data!=null&&i<data.length&&i<2;i++){
+				html1 += '<li class="list_A2"><a href="'+data[i].url+'">'+data[i].name+'</a></li>';
+			}
+			$('#mainNav').prepend(html1);
+			var html2  ='';
+			for(i=0;data!=null&&i<data.length;i++){
+				html2 += '<a href="'+data[i].url+'"><p>'+data[i].name+'</p></a>';
+			}
+			$('#mainMenu').prepend(html2);
+			
+		}});
+		new bluemp.block.userLogin();
+		$(document).on('click', '#showMainMenu', showMainMenu);
+	    function showMainMenu() {
+	        var _this = $('#mainMenu');
+	        if (_this.is(':visible')) {
+	            $('#mainMenu').animate({left: '100%'}, 500, function() {
+	                _this.hide();
+	            });
+	        } else {
+	            _this.show();
+	            $('#mainMenu').animate({left: '43%'}, 500);
+	        }
+	    }
+	    ;
+	    document.body.addEventListener('touchstart', function(e) {
+	        if ($(e.target).closest('#mainMenu').length == 1 || $(e.target).closest('#showMainMenu').length == 1) {
+	
+	        } else {
+	            blurMenu();
+	        }
+	    }, false)
+	    function blurMenu() {
+	        if ($('#mainMenu').is(':visible')) {
+	            $('#mainMenu').animate({left: '100%'}, 500, function() {
+	                $('#mainMenu').hide();
+	            });
+	        }
+	    }
+	</script>
+<script>
+		var WeixinTLImg=MsgImg="<php>echo getCommonInfo('logo')?getCommonInfo('logo'):C('SHARE_LOGO');</php>",WeixinUrl="<php>echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];</php>",WeinxinTitle=WeixinDesc="{$pageTitle}";
+</script>
+</block>

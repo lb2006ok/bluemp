@@ -1,0 +1,87 @@
+<extend name="Public:newbase" />
+<block name="main">
+    <js file="__JS__/common/imagesloaded.js" />
+    <js file="__JS__/common/masonry.min.js" />
+    <js file="__JS__/common/iscroll.js" />
+    <css file="__CSS__/index.css" />
+    <css file="__CSS__/theme{$theme}.css" />
+	<div class="bluemp_block_banner"></div>
+	<div class="bluemp_block_logo"></div>
+	<div class="bluemp_block_title"></div>
+	<div class="bluemp_block_background">
+		<div class="bluemp_block_channel_list"></div>
+		<div class="bluemp_block_bottom_nav"></div>
+		<div class="bluemp_block_copyright"></div>
+		<div class="bluemp_block_archivalinfo"></div>
+	</div>
+	<footer>
+		<nav>
+			<div class="f_box">
+				<ul id="mainNav">
+	                <li class="list_A4"><a href="javascript:;"  id="showMainMenu"><img src="__IMG__/gengduo-icon.png"/></a>
+	               
+	                </li>
+	            </ul>
+			</div>
+			<div class="tanceng1" id="mainMenu" style="display: none;position: absolute; bottom: 50px;; left:100%;">
+				
+				<div class="bluemp_block_userlogin"></div>
+			</div>
+		</nav>
+	</footer>
+	<script>
+		new bluemp.block.banner();
+		new bluemp.block.logo();
+		new bluemp.block.title();
+		new bluemp.block.channelList();
+		new bluemp.block.background();
+		new bluemp.block.bottomNav();
+		new bluemp.block.extendInfo();
+		new bluemp.block.extendInfo({container:'.bluemp_block_archivalinfo',infoKey:'archivalinfo'});
+		new bluemp.block.mainNav({isDefault:false,fnSuccess:function(data){
+			var html1 = '';
+			data!=null?html1 += '<li class="list_A1"><a href="/Portal/channel.html"><img src="__IMG__/home-icon.png"/></a></li>':html1+='';
+			for(i=0;data!=null&&i<data.length&&i<2;i++){
+				html1 += '<li class="list_A2"><a href="'+data[i].url+'">'+data[i].name+'</a></li>';
+			}
+			$('#mainNav').prepend(html1);
+			var html2  ='';
+			for(i=0;data!=null&&i<data.length;i++){
+				html2 += '<a href="'+data[i].url+'"><p>'+data[i].name+'</p></a>';
+			}
+			$('#mainMenu').prepend(html2);
+			
+		}});
+		new bluemp.block.userLogin();
+		$(document).on('click', '#showMainMenu', showMainMenu);
+    function showMainMenu() {
+        var _this = $('#mainMenu');
+        if (_this.is(':visible')) {
+            $('#mainMenu').animate({left: '100%'}, 500, function() {
+                _this.hide();
+            });
+        } else {
+            _this.show();
+            $('#mainMenu').animate({left: '43%'}, 500);
+        }
+    }
+    ;
+    document.body.addEventListener('touchstart', function(e) {
+        if ($(e.target).closest('#mainMenu').length == 1 || $(e.target).closest('#showMainMenu').length == 1) {
+
+        } else {
+            blurMenu();
+        }
+    }, false)
+    function blurMenu() {
+        if ($('#mainMenu').is(':visible')) {
+            $('#mainMenu').animate({left: '100%'}, 500, function() {
+                $('#mainMenu').hide();
+            });
+        }
+    }
+	</script>
+	<script>
+		var WeixinTLImg=MsgImg="<php>echo getCommonInfo('logo')?getCommonInfo('logo'):C('SHARE_LOGO');</php>",WeixinUrl="",WeinxinTitle=WeixinDesc="{$pageTitle}";
+	</script>
+</block>

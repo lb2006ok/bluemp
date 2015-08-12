@@ -1,0 +1,135 @@
+<extend name="Public:newbase" />
+<block name="main">
+    <js file="__JS__/common/imagesloaded.js" />
+    <js file="__JS__/common/masonry.min.js" />
+    <js file="__JS__/common/iscroll.js" />
+    <css file="__CSS__/index.css" />
+    <css file="__CSS__/theme{$theme}.css" />
+    <style>
+    .bluemp_block_logo {
+	  width: 170px;
+	  position: relative;
+	  left: 5%;
+	  top: -98px;
+	  z-index: 6;
+	}
+	.shouye-bg {
+	  width: initial;
+	  position: relative;
+	  top: -62px;
+	}
+	.box .name-bg {
+	  top: -31px;
+	  left: 22%;
+	  height: 30px;
+	  width: 160px;
+	  position: relative;
+	}	
+	.name-span {
+	  left: 23%;
+	 }
+	.huati-huifu {
+	  position: relative;
+ 	  bottom: 0px;
+	}
+	.shouye-bg .pan2 {
+	  height: 36px;
+	  width: 65%;
+	  line-height: 36px;
+	  font-size: 14px;
+	  color: #fff;
+	  position: relative;
+	  top: -36px;
+	  padding-left: 25%;
+	}
+    </style>
+	<div class="bluemp_block_banner"></div>
+	<div class="bluemp_block_logo"></div>
+	<div class="shouye-bg">
+		<div class="name-bg"><img src="__IMG__/name-bg.png"><span class="name-span" id="comName"></span></div>	
+		<div class="huati-huifu"><img src="__IMG__/huati-bg.png"></div>
+		<div class="pan2" style="text-align:center;">
+			<span><img src="__IMG__/huati-icon.png" alt="">话题<span id="topicNum"></span></span>
+			<span style="margin-left:20px;"><img src="__IMG__/huifu-icon.png" alt="">回复<span id="replyNum"></span></span>
+		</div>	
+	</div>
+	<div class="clear"></div>
+	<div class="content">
+		<p class="pp1">版块</p>
+		<div class="bluemp_block_block_list"></div>
+		<div class="pp1"><p class="pp2">TOP10热点话题</p></div>
+		<div class="bluemp_block_topic_rank"></div>
+		<p style="height:50px;"></p>
+	</div>
+	<footer>
+		<nav>
+			<div class="f_box">
+				<ul id="mainNav">
+	                <li class="list_A4"><a href="javascript:;"  id="showMainMenu"><img src="__IMG__/gengduo-icon.png"/></a>
+	               
+	                </li>
+	            </ul>
+			</div>
+			<div class="tanceng1" id="mainMenu" style="display: none;position: absolute; bottom: 50px;; left:100%;">
+				
+				<div class="bluemp_block_userlogin"></div>
+			</div>
+		</nav>
+	</footer>
+<script>
+	new bluemp.block.banner();		
+	new bluemp.block.logo();
+	new bluemp.block.communityInfo({isDefault:false,fnSuccess:function(data){
+		$('#topicNum').text(data.topictotal);
+		$('#replyNum').text(data.replytotal);
+		$('#comName').text(data.forumname);
+	}});
+	new bluemp.block.blockList();
+	new bluemp.block.topicRank();
+	new bluemp.block.mainNav({isDefault:false,fnSuccess:function(data){
+		var html1 = '';
+		data!=null?html1 += '<li class="list_A1"><a href="/Portal/channel.html"><img src="__IMG__/home-icon.png"/></a></li>':html1+='';
+		for(i=0;data!=null&&i<data.length&&i<2;i++){
+			html1 += '<li class="list_A2"><a href="'+data[i].url+'">'+data[i].name+'</a></li>';
+		}
+		$('#mainNav').prepend(html1);
+		var html2  ='';
+		for(i=0;data!=null&&i<data.length;i++){
+			html2 += '<a href="'+data[i].url+'"><p>'+data[i].name+'</p></a>';
+		}
+		$('#mainMenu').prepend(html2);
+		
+	}});
+	new bluemp.block.userLogin();
+	$(document).on('click', '#showMainMenu', showMainMenu);
+    function showMainMenu() {
+        var _this = $('#mainMenu');
+        if (_this.is(':visible')) {
+            $('#mainMenu').animate({left: '100%'}, 500, function() {
+                _this.hide();
+            });
+        } else {
+            _this.show();
+            $('#mainMenu').animate({left: '43%'}, 500);
+        }
+    }
+    ;
+    document.body.addEventListener('touchstart', function(e) {
+        if ($(e.target).closest('#mainMenu').length == 1 || $(e.target).closest('#showMainMenu').length == 1) {
+
+        } else {
+            blurMenu();
+        }
+    }, false)
+    function blurMenu() {
+        if ($('#mainMenu').is(':visible')) {
+            $('#mainMenu').animate({left: '100%'}, 500, function() {
+                $('#mainMenu').hide();
+            });
+        }
+    }
+</script>
+<script>
+		var WeixinTLImg=MsgImg="{$tplinfo.logo}",WeixinUrl="",WeinxinTitle=WeixinDesc='{$pageTitle}';
+</script>
+</block>

@@ -1,0 +1,121 @@
+<extend name="Public:newbase" />
+<block name="main">
+    <js file="__JS__/common/imagesloaded.js" />
+    <js file="__JS__/common/masonry.min.js" />
+    <js file="__JS__/common/iscroll.js" />
+    <css file="__CSS__/index.css" /> 
+    <css file="__CSS__/theme{$theme}.css" /> 
+<div class="wz_box">
+    <div class="wz_navA">
+    	<div class="bluemp_block_breadcrumb"></div>
+    	<div class="wz_nav01" id="channelList"><a href="javascript:void(0)"><img src="__IMG__/ht_icon03.png" /></a></div>
+			<div class="tanceng2" id="operateBlock" style="display:none;">
+				<div class="bluemp_block_channel_list"></div>
+			</div>
+    </div>
+    <div class="bluemp_block_article_detail" >
+    	
+    </div>
+    <div class="bluemp_block_article_options">
+    	
+    </div>
+ 	<div class="wz_txt article_vote_container" style="margin-top:1em"></div>
+ 	<div class="bluemp_block_article_reply_list">
+    	
+    </div>
+  </div>
+  <div class="loading_A" style="display:none;width:100%;"><img src="__IMG__/nui_ico_loading_xs.gif">加载中</div>
+ <p style="height:50px;width:100%;float:left;"></p>
+	</div>
+<footer>
+	<nav>
+		<div class="f_box">
+			<ul id="mainNav">
+                <li class="list_A4"><a href="javascript:;"  id="showMainMenu"><img src="__IMG__/gengduo-icon.png"/></a>
+               
+                </li>
+            </ul>
+		</div>
+		<div class="tanceng1" id="mainMenu" style="display: none;position: absolute; bottom: 50px;; left:100%;">
+			
+			<div class="bluemp_block_userlogin"></div>
+		</div>
+	</nav>
+</footer>
+<script type="text/javascript">
+	new bluemp.block.channelList();
+	new bluemp.block.articleDetail();
+	new bluemp.block.options();
+	new bluemp.block.replyList();
+	new bluemp.block.breadcrumb({type:1});
+	new bluemp.block.mainNav({isDefault:false,fnSuccess:function(data){
+		var html1 = '';
+		data!=null?html1 += '<li class="list_A1"><a href="/Portal/channel.html"><img src="__IMG__/home-icon.png"/></a></li>':html1+='';
+		for(i=0;data!=null&&i<data.length&&i<2;i++){
+			html1 += '<li class="list_A2"><a href="'+data[i].url+'">'+data[i].name+'</a></li>';
+		}
+		$('#mainNav').prepend(html1);
+		var html2  ='';
+		for(i=0;data!=null&&i<data.length;i++){
+			html2 += '<a href="'+data[i].url+'"><p>'+data[i].name+'</p></a>';
+		}
+		$('#mainMenu').prepend(html2);
+		
+	}});
+	new bluemp.block.userLogin();
+	if ($(".article_vote_container")) {
+	    new bluemp.tool.Vote({
+	    	container: $(".article_vote_container")
+	    });
+	}
+	$(document).on('click','#channelList',function(){
+		var _operateBlock = $('#operateBlock');
+		if(_operateBlock.is(':visible')){
+			_operateBlock.slideUp();
+		}else{
+			_operateBlock.slideDown();
+		}
+	})
+	document.body.addEventListener('touchstart',function(e){
+		if($(e.target).closest('#channelList').length==1||$(e.target).closest('#operateBlock').length==1){
+				
+		}else{
+			blurMenu2();
+		}
+	},false)
+	function blurMenu2(){
+		if($('#operateBlock').is(':visible')){
+			$('#operateBlock').slideUp();
+		}
+	}
+	$(document).on('click', '#showMainMenu', showMainMenu);
+    function showMainMenu() {
+        var _this = $('#mainMenu');
+        if (_this.is(':visible')) {
+            $('#mainMenu').animate({left: '100%'}, 500, function() {
+                _this.hide();
+            });
+        } else {
+            _this.show();
+            $('#mainMenu').animate({left: '43%'}, 500);
+        }
+    };
+    document.body.addEventListener('touchstart', function(e) {
+        if ($(e.target).closest('#mainMenu').length == 1 || $(e.target).closest('#showMainMenu').length == 1) {
+
+        } else {
+            blurMenu();
+        }
+    }, false)
+    function blurMenu() {
+        if ($('#mainMenu').is(':visible')) {
+            $('#mainMenu').animate({left: '100%'}, 500, function() {
+                $('#mainMenu').hide();
+            });
+        }
+    }
+</script>
+	<script>
+    var WeixinTLImg=MsgImg="<php> $articleInfo = getArticleInfo($aid); echo $articleInfo['pic']?$articleInfo['pic']:C('SHARE_LOGO');</php>",WeixinUrl="",WeinxinTitle = "{$pageTitle}", WeixinDesc = "{$articleInfo.summary|default=$pageTitle}";
+	</script>
+</block>
